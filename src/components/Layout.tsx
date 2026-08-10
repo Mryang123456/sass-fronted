@@ -1,0 +1,11 @@
+import { AuditOutlined,CheckCircleOutlined,DashboardOutlined,FileSearchOutlined,LogoutOutlined,ProfileOutlined,TeamOutlined } from '@ant-design/icons';
+import { Button,Layout as AntLayout,Menu,Tag,Typography } from 'antd';
+import { NavLink,Navigate,Outlet,useNavigate } from 'react-router-dom';
+import { useAuth } from '../lib/auth';
+import type { Role } from '../lib/types';
+import { allApplicationRoles,approvalRoles,auditRoles,organizationRoles } from '../lib/permissions';
+
+const nav=[['/', '工作台', <DashboardOutlined/>, null],['/applications','我的申请',<ProfileOutlined/>,null],['/approvals','审批中心',<CheckCircleOutlined/>,approvalRoles],['/all','全部申请',<FileSearchOutlined/>,allApplicationRoles],['/organization','组织管理',<TeamOutlined/>,organizationRoles],['/audit','审计日志',<AuditOutlined/>,auditRoles]] as const;
+export function Protected(){const {session}=useAuth();return session?<Outlet/>:<Navigate to="/login" replace/>}
+export function RoleProtected({roles}:{roles:readonly Role[]}){const {session}=useAuth();return session&&roles.includes(session.user.role)?<Outlet/>:<Navigate to="/" replace/>}
+export function Layout(){const {session,setSession}=useAuth(),navigate=useNavigate();if(!session)return null;const items=nav.filter(([to,,,roles])=>!(session.user.role==='TENANT_ADMIN'&&to==='/applications')&&(!roles||(roles as readonly Role[]).includes(session.user.role))).map(([to,label,icon])=>({key:to,icon,label:<NavLink to={to} end={to==='/'}>{label}</NavLink>}));return <AntLayout className="shell"><AntLayout.Sider className="app-sider" width={252} theme="dark"><div className="brand"><i>PF</i><div><strong>ProcureFlow</strong><small>企业采购审批</small></div></div><Menu className="app-menu" aria-label="主导航" theme="dark" mode="inline" items={items}/><div className="tenant"><small>当前企业</small><strong>{session.tenant.name}</strong><span>{session.tenant.slug}</span></div></AntLayout.Sider><AntLayout className="app-main"><AntLayout.Header className="app-header"><div><Typography.Text type="secondary">欢迎回来</Typography.Text><Typography.Text strong>{session.user.displayName}</Typography.Text></div><Tag color="blue">{session.user.role}</Tag><Button type="text" icon={<LogoutOutlined/>} onClick={()=>{setSession(null);navigate('/login')}}>退出</Button></AntLayout.Header><AntLayout.Content className="content"><Outlet/></AntLayout.Content></AntLayout></AntLayout>}

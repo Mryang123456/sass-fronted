@@ -1,0 +1,3 @@
+import { beforeEach,describe,expect,it } from 'vitest'; import { sessionStore } from './session'; import type { Session } from './types';
+const value={token:'secret',expiresAt:'2026-08-08T10:00:00Z',tenant:{id:'t1',slug:'acme',name:'Acme',timezone:'Asia/Shanghai'},user:{id:'u1',username:'alice',displayName:'Alice',role:'EMPLOYEE' as const,status:'ACTIVE' as const,department:{id:'d1',name:'研发部',status:'ACTIVE' as const}}};
+describe('sessionStore',()=>{beforeEach(()=>sessionStorage.clear());it('保存并恢复会话',()=>{sessionStore.set(value as Session);expect(sessionStore.get()?.user.username).toBe('alice')});it('清除会话',()=>{sessionStore.set(value as Session);sessionStore.clear();expect(sessionStore.get()).toBeNull()})});

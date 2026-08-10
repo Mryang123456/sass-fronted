@@ -1,0 +1,15 @@
+export type Role='TENANT_ADMIN'|'EMPLOYEE'|'DEPT_MANAGER'|'FINANCE'|'TENANT_OWNER'|'AUDITOR';
+export type Status='DRAFT'|'PENDING_DEPT_MANAGER'|'PENDING_FINANCE'|'PENDING_TENANT_OWNER'|'APPROVED'|'REJECTED';
+export type Node='DEPT_MANAGER'|'FINANCE'|'TENANT_OWNER';
+export type AuditFilters={eventType?:string;actorId?:string;result?:string;from?:string;to?:string;page?:number;pageSize?:number};
+export type PagedResponse<T>={items:T[];page:number;pageSize:number;total:number;totalPages:number};
+export type Department={id:string;name:string;status:'ACTIVE'|'INACTIVE';manager?:User|null;memberCount:number;version:number};
+export type User={id:string;username:string;displayName:string;role:Role;status:'ACTIVE'|'INACTIVE';department:{id:string;name:string;status:'ACTIVE'|'INACTIVE'};version?:number};
+export type Item={id:string;lineNo:number;name:string;quantity:string;unitPriceCents:number;lineAmountCents:number;note:string|null};
+export type DraftInput={title:string;reason:string|null;costCenter:string|null;items:Array<Pick<Item,'name'|'quantity'|'unitPriceCents'|'note'>>};
+export type History={type:'SUBMITTED'|'APPROVAL';id?:string;node?:Node;action?:'APPROVE'|'REJECT';actor?:User;approver?:User;comment?:string|null;fromStatus:string;toStatus:string;createdAt:string};
+export type Application={id:string;applicationNo:string|null;title:string;reason:string|null;costCenter:string|null;currency:'CNY';totalAmountCents:number;status:Status;currentApprovalNode:Node|null;creator:User;department:User['department'];itemCount:number;items:Item[];history:History[];version:number;submittedAt:string|null;createdAt:string;updatedAt:string;permissions:{canEdit:boolean;canDelete:boolean;canSubmit:boolean;canApprove:boolean;canReject:boolean}};
+export type Session={token:string;expiresAt:string;tenant:{id:string;slug:string;name:string;timezone:string};user:User};
+export type ApiError={code:string;message:string;requestId:string;details?:Record<string,unknown>};
+export const money=(cents:number)=>new Intl.NumberFormat('zh-CN',{style:'currency',currency:'CNY'}).format(cents/100);
+export const statusLabel:Record<Status,string>={DRAFT:'草稿',PENDING_DEPT_MANAGER:'待部门主管',PENDING_FINANCE:'待财务',PENDING_TENANT_OWNER:'待负责人',APPROVED:'已通过',REJECTED:'已驳回'};
