@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Alert, Card, Table, Tabs, Tag, Typography } from 'antd';
 import type { TableColumnsType } from 'antd';
-import { service } from '../lib/service';
-import type { Department, User } from '../lib/types';
+import { service } from '../../shared/lib/service';
+import type { Department, User } from '../../shared/lib/types';
 
 const departmentColumns: TableColumnsType<Department> = [
   { title: '部门', dataIndex: 'name', key: 'name', render: value => <Typography.Text strong>{value as string}</Typography.Text> },

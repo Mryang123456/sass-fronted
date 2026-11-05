@@ -1,8 +1,8 @@
 import { cleanup,fireEvent,render,screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach,describe,expect,it,vi } from 'vitest';
-import { service } from '../lib/service';
-import type { Application } from '../lib/types';
+import { service } from '../../shared/lib/service';
+import type { Application } from '../../shared/lib/types';
 import { Approvals } from './Approvals';
 
 const task=(id='application-1'):Application=>({id,applicationNo:'PF-20260810-0001',title:'研发设备采购',reason:'扩充研发设备',costCenter:'R&D',currency:'CNY',totalAmountCents:10000,status:'PENDING_DEPT_MANAGER',currentApprovalNode:'DEPT_MANAGER',creator:{id:'alice',username:'alice',displayName:'员工 Alice',role:'EMPLOYEE',status:'ACTIVE',department:{id:'rd',name:'研发部',status:'ACTIVE'}},department:{id:'rd',name:'研发部',status:'ACTIVE'},itemCount:1,items:[],history:[],version:2,submittedAt:'2026-08-10T00:00:00.000Z',createdAt:'2026-08-10T00:00:00.000Z',updatedAt:'2026-08-10T00:00:00.000Z',permissions:{canEdit:false,canDelete:false,canSubmit:false,canApprove:true,canReject:true}});

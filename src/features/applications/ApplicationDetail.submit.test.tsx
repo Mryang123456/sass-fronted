@@ -1,9 +1,9 @@
 import { cleanup,fireEvent,render,screen,waitFor } from '@testing-library/react';
 import { MemoryRouter,Route,Routes } from 'react-router-dom';
 import { afterEach,describe,expect,it,vi } from 'vitest';
-import { demo } from '../lib/demo';
-import { service } from '../lib/service';
-import type { Application } from '../lib/types';
+import { demo } from '../../shared/lib/demo';
+import { service } from '../../shared/lib/service';
+import type { Application } from '../../shared/lib/types';
 import { ApplicationDetail,ApplicationForm } from './ApplicationDetail';
 
 const submitted=(application:Application):Application=>({

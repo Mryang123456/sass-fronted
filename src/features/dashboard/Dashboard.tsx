@@ -2,9 +2,9 @@ import { ArrowRightOutlined,PlusOutlined } from '@ant-design/icons';
 import { Button,Card,Col,Empty,Flex,Row,Space,Statistic,Typography } from 'antd';
 import { lazy,Suspense,useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Loading } from '../components/ui';
-import { service } from '../lib/service';
-import { money } from '../lib/types';
+import { Loading } from '../../shared/components/ui';
+import { service } from '../../shared/lib/service';
+import { money } from '../../shared/lib/types';
 
 const LazyColumn=lazy(()=>import('@ant-design/plots/es/components/column'));
 type Data={summary:{totalCount:number;draftCount:number;pendingCount:number;approvedCount:number;approvedAmountCents:number;rejectedCount:number;myPendingTaskCount:number};submissionTrend:{date:string;amountCents:number;count:number}[];departmentRanking:{department:{name:string};amountCents:number;count:number}[]};

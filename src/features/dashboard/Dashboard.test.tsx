@@ -1,7 +1,7 @@
 import { cleanup,render,screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach,describe,expect,it,vi } from 'vitest';
-import { service } from '../lib/service';
+import { service } from '../../shared/lib/service';
 import { Dashboard } from './Dashboard';
 
 vi.mock('@ant-design/plots/es/components/column',()=>({default:()=> <div>chart</div>}));

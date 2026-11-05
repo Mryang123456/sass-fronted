@@ -2,10 +2,10 @@ import { useEffect, useMemo, useState } from 'react';
 import { Button, Card, Empty, Input, Select, Space, Table, Tag, Typography } from 'antd';
 import type { TableColumnsType } from 'antd';
 import { Link } from 'react-router-dom';
-import { service } from '../lib/service';
-import { useAuth } from '../lib/auth';
-import { money, statusLabel } from '../lib/types';
-import type { Application, Status } from '../lib/types';
+import { service } from '../../shared/lib/service';
+import { useAuth } from '../../shared/lib/auth';
+import { money, statusLabel } from '../../shared/lib/types';
+import type { Application, Status } from '../../shared/lib/types';
 
 const statusOptions = (Object.keys(statusLabel) as Status[]).map(value => ({ value, label: statusLabel[value] }));
 const statusColors: Record<Status, string> = { DRAFT: 'default', PENDING_DEPT_MANAGER: 'gold', PENDING_FINANCE: 'orange', PENDING_TENANT_OWNER: 'blue', APPROVED: 'green', REJECTED: 'red' };

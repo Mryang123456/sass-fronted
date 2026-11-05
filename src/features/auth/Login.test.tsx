@@ -1,7 +1,7 @@
 import { fireEvent,render,waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { beforeEach,describe,expect,it } from 'vitest';
-import { AuthProvider } from '../lib/auth';
+import { AuthProvider } from '../../shared/lib/auth';
 import { Login } from './Login';
 
 describe('Login',()=>{

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Card, DatePicker, Empty, Input, Select, Space, Table, Tag, Typography } from 'antd';
 import type { GetProps, TableColumnsType, TablePaginationConfig } from 'antd';
-import { service } from '../lib/service';
-import type { PagedResponse, User } from '../lib/types';
+import { service } from '../../shared/lib/service';
+import type { PagedResponse, User } from '../../shared/lib/types';
 
 type Log = { id: string; eventType: string; actor: User | null; targetType: string; targetId: string | null; result: string; requestId: string; createdAt: string };
 type RangeValue = GetProps<typeof DatePicker.RangePicker>['value'];

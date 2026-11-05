@@ -1,10 +1,10 @@
 import { cleanup,render,screen } from '@testing-library/react';
 import { MemoryRouter,Route,Routes } from 'react-router-dom';
 import { afterEach,describe,expect,it } from 'vitest';
-import { AuthProvider } from '../lib/auth';
-import { auditRoles } from '../lib/permissions';
-import { sessionStore } from '../lib/session';
-import type { Role,Session } from '../lib/types';
+import { AuthProvider } from '../../shared/lib/auth';
+import { auditRoles } from '../../shared/lib/permissions';
+import { sessionStore } from '../../shared/lib/session';
+import type { Role,Session } from '../../shared/lib/types';
 import { Layout,RoleProtected } from './Layout';
 
 const session=(role:Role):Session=>({token:'token',expiresAt:'2026-08-11T00:00:00.000Z',tenant:{id:'t1',slug:'acme',name:'Acme',timezone:'Asia/Shanghai'},user:{id:'u1',username:'user',displayName:'User',role,status:'ACTIVE',department:{id:'d1',name:'研发部',status:'ACTIVE'}}});

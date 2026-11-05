@@ -3,9 +3,9 @@ import { Button,Card,Descriptions,Flex,Form,Input,InputNumber,Space,Table,Timeli
 import type { ColumnsType } from 'antd/es/table';
 import { useEffect,useRef,useState } from 'react';
 import { Link,useNavigate,useParams } from 'react-router-dom';
-import { service } from '../lib/service';
-import { money,type Application,type DraftInput,type Item } from '../lib/types';
-import { ErrorBox,Loading,StatusBadge } from '../components/ui';
+import { service } from '../../shared/lib/service';
+import { money,type Application,type DraftInput,type Item } from '../../shared/lib/types';
+import { ErrorBox,Loading,StatusBadge } from '../../shared/components/ui';
 
 const quantityPattern=/^(?:0|[1-9]\d{0,11})(?:\.\d{1,4})?$/;
 const yuanPattern=/^\d+(?:\.\d{1,2})?$/;

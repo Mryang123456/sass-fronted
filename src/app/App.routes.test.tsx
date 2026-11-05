@@ -1,9 +1,9 @@
 import { cleanup,render,screen,waitFor } from '@testing-library/react';
 import { afterEach,describe,expect,it,vi } from 'vitest';
-import { sessionStore } from './lib/session';
-import type { Role,Session } from './lib/types';
+import { sessionStore } from '../shared/lib/session';
+import type { Role,Session } from '../shared/lib/types';
 
-vi.mock('./pages/Organization',()=>({Organization:()=> <div>organization-route-content</div>}));
+vi.mock('../features/organization/Organization',()=>({Organization:()=> <div>organization-route-content</div>}));
 
 import App from './App';
 

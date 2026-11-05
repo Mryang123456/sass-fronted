@@ -2,7 +2,7 @@ import { cleanup,fireEvent,render,screen,waitFor } from '@testing-library/react'
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
 import { afterEach,describe,expect,it,vi } from 'vitest';
-import { service } from '../lib/service';
+import { service } from '../../shared/lib/service';
 import { Audit } from './Audit';
 
 const log=(id:string,eventType='AUTH_LOGIN_SUCCESS')=>({id,eventType,actor:null,targetType:'SESSION',targetId:null,result:'SUCCESS',requestId:`request-${id}`,createdAt:'2026-08-10T00:00:00.000Z'});

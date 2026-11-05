@@ -2,9 +2,9 @@ import { CheckOutlined,CloseOutlined } from '@ant-design/icons';
 import { Button,Card,Descriptions,Empty,Flex,Input,Space,Spin,Typography } from 'antd';
 import { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
-import { service } from '../lib/service';
-import { money,type Application } from '../lib/types';
-import { ErrorBox,StatusBadge } from '../components/ui';
+import { service } from '../../shared/lib/service';
+import { money,type Application } from '../../shared/lib/types';
+import { ErrorBox,StatusBadge } from '../../shared/components/ui';
 
 export function Approvals(){
  const [items,setItems]=useState<Application[]|null>(null),[selected,setSelected]=useState<Application|null>(null),[comment,setComment]=useState(''),[error,setError]=useState(''),[deciding,setDeciding]=useState<'APPROVE'|'REJECT'|null>(null);

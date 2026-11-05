@@ -1,10 +1,10 @@
 import { cleanup,render,screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach,describe,expect,it,vi } from 'vitest';
-import { AuthProvider } from '../lib/auth';
-import { service } from '../lib/service';
-import { sessionStore } from '../lib/session';
-import type { Session } from '../lib/types';
+import { AuthProvider } from '../../shared/lib/auth';
+import { service } from '../../shared/lib/service';
+import { sessionStore } from '../../shared/lib/session';
+import type { Session } from '../../shared/lib/types';
 import { Applications } from './Applications';
 
 const admin:Session={token:'token',expiresAt:'2026-08-11T00:00:00.000Z',tenant:{id:'t1',slug:'acme',name:'Acme',timezone:'Asia/Shanghai'},user:{id:'admin',username:'admin',displayName:'管理员',role:'TENANT_ADMIN',status:'ACTIVE',department:{id:'d1',name:'管理部',status:'ACTIVE'}}};

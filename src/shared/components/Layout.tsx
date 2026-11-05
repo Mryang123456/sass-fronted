@@ -1,9 +1,9 @@
 import { AuditOutlined,CheckCircleOutlined,DashboardOutlined,FileSearchOutlined,LogoutOutlined,ProfileOutlined,TeamOutlined } from '@ant-design/icons';
 import { Button,Layout as AntLayout,Menu,Tag,Typography } from 'antd';
 import { NavLink,Navigate,Outlet,useNavigate } from 'react-router-dom';
-import { useAuth } from '../lib/auth';
-import type { Role } from '../lib/types';
-import { allApplicationRoles,approvalRoles,auditRoles,organizationRoles } from '../lib/permissions';
+import { useAuth } from '../../shared/lib/auth';
+import type { Role } from '../../shared/lib/types';
+import { allApplicationRoles,approvalRoles,auditRoles,organizationRoles } from '../../shared/lib/permissions';
 
 const nav=[['/', '工作台', <DashboardOutlined/>, null],['/applications','我的申请',<ProfileOutlined/>,null],['/approvals','审批中心',<CheckCircleOutlined/>,approvalRoles],['/all','全部申请',<FileSearchOutlined/>,allApplicationRoles],['/organization','组织管理',<TeamOutlined/>,organizationRoles],['/audit','审计日志',<AuditOutlined/>,auditRoles]] as const;
 export function Protected(){const {session}=useAuth();return session?<Outlet/>:<Navigate to="/login" replace/>}

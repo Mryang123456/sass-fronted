@@ -1,7 +1,7 @@
 import { Alert,Button as AntButton,Card as AntCard,Empty as AntEmpty,Spin,Tag,Typography } from 'antd';
 import type { ButtonProps } from 'antd';
 import type { ReactNode } from 'react';
-import { money,statusLabel,type Status } from '../lib/types';
+import { money,statusLabel,type Status } from '../../shared/lib/types';
 
 type Variant='primary'|'secondary'|'danger';
 type Props=Omit<ButtonProps,'type'|'danger'|'variant'|'htmlType'>&{variant?:Variant;type?:'button'|'submit'|'reset'};
